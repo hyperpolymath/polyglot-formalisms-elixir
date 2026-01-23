@@ -14,37 +14,37 @@ defmodule PolyglotFormalisms.Logical do
   - Returns: true if both a and b are true, otherwise false
 
   ## Truth Table
-  | a     | b     | and(a, b) |
-  |-------|-------|-----------|
-  | true  | true  | true      |
-  | true  | false | false     |
-  | false | true  | false     |
-  | false | false | false     |
+  | a     | b     | logical_and(a, b) |
+  |-------|-------|-------------------|
+  | true  | true  | true              |
+  | true  | false | false             |
+  | false | true  | false             |
+  | false | false | false             |
 
   ## Mathematical Properties
-  - Commutativity: and(a, b) == and(b, a)
-  - Associativity: and(and(a, b), c) == and(a, and(b, c))
-  - Identity element: and(a, true) == a
-  - Annihilator: and(a, false) == false
-  - Idempotence: and(a, a) == a
-  - Distributivity: and(a, or(b, c)) == or(and(a, b), and(a, c))
+  - Commutativity: logical_and(a, b) == logical_and(b, a)
+  - Associativity: logical_and(logical_and(a, b), c) == logical_and(a, logical_and(b, c))
+  - Identity element: logical_and(a, true) == a
+  - Annihilator: logical_and(a, false) == false
+  - Idempotence: logical_and(a, a) == a
+  - Distributivity: logical_and(a, logical_or(b, c)) == logical_or(logical_and(a, b), logical_and(a, c))
 
   ## Examples
 
-      iex> PolyglotFormalisms.Logical.and(true, true)
+      iex> PolyglotFormalisms.Logical.logical_and(true, true)
       true
 
-      iex> PolyglotFormalisms.Logical.and(true, false)
+      iex> PolyglotFormalisms.Logical.logical_and(true, false)
       false
 
-      iex> PolyglotFormalisms.Logical.and(false, true)
+      iex> PolyglotFormalisms.Logical.logical_and(false, true)
       false
 
-      iex> PolyglotFormalisms.Logical.and(false, false)
+      iex> PolyglotFormalisms.Logical.logical_and(false, false)
       false
   """
-  @spec unquote(:and)(boolean(), boolean()) :: boolean()
-  def unquote(:and)(a, b), do: a and b
+  @spec logical_and(boolean(), boolean()) :: boolean()
+  def logical_and(a, b), do: a and b
 
   @doc """
   Computes the logical disjunction (OR) of two boolean values.
@@ -54,37 +54,37 @@ defmodule PolyglotFormalisms.Logical do
   - Returns: true if at least one of a or b is true, otherwise false
 
   ## Truth Table
-  | a     | b     | or(a, b) |
-  |-------|-------|----------|
-  | true  | true  | true     |
-  | true  | false | true     |
-  | false | true  | true     |
-  | false | false | false    |
+  | a     | b     | logical_or(a, b) |
+  |-------|-------|------------------|
+  | true  | true  | true             |
+  | true  | false | true             |
+  | false | true  | true             |
+  | false | false | false            |
 
   ## Mathematical Properties
-  - Commutativity: or(a, b) == or(b, a)
-  - Associativity: or(or(a, b), c) == or(a, or(b, c))
-  - Identity element: or(a, false) == a
-  - Annihilator: or(a, true) == true
-  - Idempotence: or(a, a) == a
-  - Distributivity: or(a, and(b, c)) == and(or(a, b), or(a, c))
+  - Commutativity: logical_or(a, b) == logical_or(b, a)
+  - Associativity: logical_or(logical_or(a, b), c) == logical_or(a, logical_or(b, c))
+  - Identity element: logical_or(a, false) == a
+  - Annihilator: logical_or(a, true) == true
+  - Idempotence: logical_or(a, a) == a
+  - Distributivity: logical_or(a, logical_and(b, c)) == logical_and(logical_or(a, b), logical_or(a, c))
 
   ## Examples
 
-      iex> PolyglotFormalisms.Logical.or(true, true)
+      iex> PolyglotFormalisms.Logical.logical_or(true, true)
       true
 
-      iex> PolyglotFormalisms.Logical.or(true, false)
+      iex> PolyglotFormalisms.Logical.logical_or(true, false)
       true
 
-      iex> PolyglotFormalisms.Logical.or(false, true)
+      iex> PolyglotFormalisms.Logical.logical_or(false, true)
       true
 
-      iex> PolyglotFormalisms.Logical.or(false, false)
+      iex> PolyglotFormalisms.Logical.logical_or(false, false)
       false
   """
-  @spec unquote(:or)(boolean(), boolean()) :: boolean()
-  def unquote(:or)(a, b), do: a or b
+  @spec logical_or(boolean(), boolean()) :: boolean()
+  def logical_or(a, b), do: a or b
 
   @doc """
   Computes the logical negation (NOT) of a boolean value.
@@ -94,27 +94,27 @@ defmodule PolyglotFormalisms.Logical do
   - Returns: true if a is false, false if a is true
 
   ## Truth Table
-  | a     | not(a) |
-  |-------|--------|
-  | true  | false  |
-  | false | true   |
+  | a     | logical_not(a) |
+  |-------|----------------|
+  | true  | false          |
+  | false | true           |
 
   ## Mathematical Properties
-  - Involution (double negation): not(not(a)) == a
-  - Excluded middle: or(a, not(a)) == true
-  - Non-contradiction: and(a, not(a)) == false
+  - Involution (double negation): logical_not(logical_not(a)) == a
+  - Excluded middle: logical_or(a, logical_not(a)) == true
+  - Non-contradiction: logical_and(a, logical_not(a)) == false
   - De Morgan's laws:
-    - not(and(a, b)) == or(not(a), not(b))
-    - not(or(a, b)) == and(not(a), not(b))
+    - logical_not(logical_and(a, b)) == logical_or(logical_not(a), logical_not(b))
+    - logical_not(logical_or(a, b)) == logical_and(logical_not(a), logical_not(b))
 
   ## Examples
 
-      iex> PolyglotFormalisms.Logical.not(true)
+      iex> PolyglotFormalisms.Logical.logical_not(true)
       false
 
-      iex> PolyglotFormalisms.Logical.not(false)
+      iex> PolyglotFormalisms.Logical.logical_not(false)
       true
   """
-  @spec unquote(:not)(boolean()) :: boolean()
-  def unquote(:not)(a), do: Kernel.not(a)
+  @spec logical_not(boolean()) :: boolean()
+  def logical_not(a), do: Kernel.not(a)
 end

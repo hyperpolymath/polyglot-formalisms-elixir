@@ -4,122 +4,122 @@ defmodule PolyglotFormalisms.LogicalTest do
   alias PolyglotFormalisms.Logical
   doctest PolyglotFormalisms.Logical
 
-  describe "and/2" do
+  describe "logical_and/2" do
     test "returns true for true && true" do
-      assert Logical.and(true, true)
+      assert Logical.logical_and(true, true)
     end
 
     test "returns false for true && false" do
-      refute Logical.and(true, false)
+      refute Logical.logical_and(true, false)
     end
 
     test "returns false for false && true" do
-      refute Logical.and(false, true)
+      refute Logical.logical_and(false, true)
     end
 
     test "returns false for false && false" do
-      refute Logical.and(false, false)
+      refute Logical.logical_and(false, false)
     end
 
     test "commutativity: and(a, b) == and(b, a)" do
-      assert Logical.and(true, false) == Logical.and(false, true)
+      assert Logical.logical_and(true, false) == Logical.logical_and(false, true)
     end
 
     test "associativity: and(and(a, b), c) == and(a, and(b, c))" do
-      assert Logical.and(Logical.and(true, true), false) == Logical.and(true, Logical.and(true, false))
+      assert Logical.logical_and(Logical.logical_and(true, true), false) == Logical.logical_and(true, Logical.logical_and(true, false))
     end
 
     test "identity element: and(a, true) == a" do
-      assert Logical.and(true, true) == true
-      assert Logical.and(false, true) == false
+      assert Logical.logical_and(true, true) == true
+      assert Logical.logical_and(false, true) == false
     end
 
     test "annihilator: and(a, false) == false" do
-      assert Logical.and(true, false) == false
-      assert Logical.and(false, false) == false
+      assert Logical.logical_and(true, false) == false
+      assert Logical.logical_and(false, false) == false
     end
 
     test "idempotence: and(a, a) == a" do
-      assert Logical.and(true, true) == true
-      assert Logical.and(false, false) == false
+      assert Logical.logical_and(true, true) == true
+      assert Logical.logical_and(false, false) == false
     end
   end
 
-  describe "or/2" do
+  describe "logical_or/2" do
     test "returns true for true || true" do
-      assert Logical.or(true, true)
+      assert Logical.logical_or(true, true)
     end
 
     test "returns true for true || false" do
-      assert Logical.or(true, false)
+      assert Logical.logical_or(true, false)
     end
 
     test "returns true for false || true" do
-      assert Logical.or(false, true)
+      assert Logical.logical_or(false, true)
     end
 
     test "returns false for false || false" do
-      refute Logical.or(false, false)
+      refute Logical.logical_or(false, false)
     end
 
     test "commutativity: or(a, b) == or(b, a)" do
-      assert Logical.or(true, false) == Logical.or(false, true)
+      assert Logical.logical_or(true, false) == Logical.logical_or(false, true)
     end
 
     test "associativity: or(or(a, b), c) == or(a, or(b, c))" do
-      assert Logical.or(Logical.or(false, false), true) == Logical.or(false, Logical.or(false, true))
+      assert Logical.logical_or(Logical.logical_or(false, false), true) == Logical.logical_or(false, Logical.logical_or(false, true))
     end
 
     test "identity element: or(a, false) == a" do
-      assert Logical.or(true, false) == true
-      assert Logical.or(false, false) == false
+      assert Logical.logical_or(true, false) == true
+      assert Logical.logical_or(false, false) == false
     end
 
     test "annihilator: or(a, true) == true" do
-      assert Logical.or(true, true) == true
-      assert Logical.or(false, true) == true
+      assert Logical.logical_or(true, true) == true
+      assert Logical.logical_or(false, true) == true
     end
 
     test "idempotence: or(a, a) == a" do
-      assert Logical.or(true, true) == true
-      assert Logical.or(false, false) == false
+      assert Logical.logical_or(true, true) == true
+      assert Logical.logical_or(false, false) == false
     end
   end
 
-  describe "not/1" do
+  describe "logical_not/1" do
     test "returns false for !true" do
-      refute Logical.not(true)
+      refute Logical.logical_not(true)
     end
 
     test "returns true for !false" do
-      assert Logical.not(false)
+      assert Logical.logical_not(false)
     end
 
     test "involution: not(not(a)) == a" do
-      assert Logical.not(Logical.not(true)) == true
-      assert Logical.not(Logical.not(false)) == false
+      assert Logical.logical_not(Logical.logical_not(true)) == true
+      assert Logical.logical_not(Logical.logical_not(false)) == false
     end
 
     test "excluded middle: or(a, not(a)) == true" do
-      assert Logical.or(true, Logical.not(true))
-      assert Logical.or(false, Logical.not(false))
+      assert Logical.logical_or(true, Logical.logical_not(true))
+      assert Logical.logical_or(false, Logical.logical_not(false))
     end
 
     test "non-contradiction: and(a, not(a)) == false" do
-      refute Logical.and(true, Logical.not(true))
-      refute Logical.and(false, Logical.not(false))
+      refute Logical.logical_and(true, Logical.logical_not(true))
+      refute Logical.logical_and(false, Logical.logical_not(false))
     end
 
     test "De Morgan's law: not(and(a, b)) == or(not(a), not(b))" do
       a = true
       b = false
-      assert Logical.not(Logical.and(a, b)) == Logical.or(Logical.not(a), Logical.not(b))
+      assert Logical.logical_not(Logical.logical_and(a, b)) == Logical.logical_or(Logical.logical_not(a), Logical.logical_not(b))
     end
 
     test "De Morgan's law: not(or(a, b)) == and(not(a), not(b))" do
       a = true
       b = false
-      assert Logical.not(Logical.or(a, b)) == Logical.and(Logical.not(a), Logical.not(b))
+      assert Logical.logical_not(Logical.logical_or(a, b)) == Logical.logical_and(Logical.logical_not(a), Logical.logical_not(b))
     end
   end
 end
