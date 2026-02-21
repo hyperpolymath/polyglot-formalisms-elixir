@@ -142,3 +142,8 @@ PMPL-1.0-or-later (Palimpsest Meta-Public License)
 - [PolyglotFormalisms.jl](https://github.com/hyperpolymath/PolyglotFormalisms.jl) - Julia reference implementation
 - [alib-for-rescript](https://github.com/hyperpolymath/alib-for-rescript) - ReScript implementation
 - [polyglot_formalisms_gleam](https://github.com/hyperpolymath/polyglot_formalisms_gleam) - Gleam implementation
+
+
+## Architecture
+
+See [TOPOLOGY.md](TOPOLOGY.md) for a visual architecture map and completion dashboard.
