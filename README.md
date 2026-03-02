@@ -135,7 +135,7 @@ mix docs
 
 ## License
 
-PMPL-1.0-or-later (Palimpsest Meta-Public License)
+PMPL-1.0-or-later (Polymathematical Meta-Public License / Palimpsest License)
 
 ## Related Projects
 

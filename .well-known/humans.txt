@@ -1,0 +1,19 @@
+# SPDX-License-Identifier: PMPL-1.0-or-later
+# humans.txt for polyglot-formalisms-elixir
+# See https://humanstxt.org/
+
+/* TEAM */
+Name: Jonathan D.A. Jewell
+Role: Author and Maintainer
+Site: https://github.com/hyperpolymath
+Contact: j.d.a.jewell@open.ac.uk
+Location: United Kingdom
+
+/* SITE */
+Software: Elixir, BEAM/OTP
+Standards: PolyglotFormalisms Common Library Specification
+License: PMPL-1.0-or-later (Polymathematical Meta-Public License)
+
+/* THANKS */
+The Elixir and Erlang/OTP communities
+The PolyglotFormalisms cross-language verification effort

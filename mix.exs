@@ -11,7 +11,8 @@ defmodule PolyglotFormalisms.MixProject do
       deps: deps(),
       description: description(),
       package: package(),
-      source_url: "https://github.com/hyperpolymath/polyglot_formalisms_elixir",
+      source_url: "https://github.com/hyperpolymath/polyglot-formalisms-elixir",
+      homepage_url: "https://github.com/hyperpolymath/polyglot-formalisms-elixir",
       docs: [
         main: "readme",
         extras: ["README.md"]
@@ -41,9 +42,11 @@ defmodule PolyglotFormalisms.MixProject do
 
   defp package do
     [
+      name: "polyglot_formalisms",
       licenses: ["PMPL-1.0-or-later"],
+      maintainers: ["Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>"],
       links: %{
-        "GitHub" => "https://github.com/hyperpolymath/polyglot_formalisms_elixir",
+        "GitHub" => "https://github.com/hyperpolymath/polyglot-formalisms-elixir",
         "Specification" => "https://github.com/hyperpolymath/PolyglotFormalisms.jl"
       }
     ]
