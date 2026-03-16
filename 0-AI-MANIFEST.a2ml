@@ -9,7 +9,7 @@
 - Prefer to keep generated files out of source control, and regenerate them with the documented commands before committing.
 
 ## Canonical Locations
-- SCM files: `.machine_readable/` ONLY (STATE.scm, ECOSYSTEM.scm, META.scm, AGENTIC.scm, NEUROSYM.scm, PLAYBOOK.scm)
+- SCM files: `.machine_readable/` ONLY (.machine_readable/6a2/STATE.a2ml, .machine_readable/6a2/ECOSYSTEM.a2ml, .machine_readable/6a2/META.a2ml, .machine_readable/6a2/AGENTIC.a2ml, .machine_readable/6a2/NEUROSYM.a2ml, .machine_readable/6a2/PLAYBOOK.a2ml)
 - Legacy location: `.machines_readable/6scm/` exists but `.machine_readable/` is authoritative
 - License: PMPL-1.0-or-later (Polymathematical Meta-Public License / Palimpsest License)
 - Author: Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
@@ -22,8 +22,8 @@
 - Logical operations use `logical_` prefix to avoid Kernel conflicts
 
 ## Workflow
-1. Inspect `.machine_readable/STATE.scm` for blockers and next actions.
-2. Respect constraints in `.machine_readable/AGENTIC.scm`.
+1. Inspect `.machine_readable/6a2/STATE.a2ml` for blockers and next actions.
+2. Respect constraints in `.machine_readable/6a2/AGENTIC.a2ml`.
 3. After finishing edits, update STATE with outcomes and commit with a concise, imperative message.
 
 ## Delivery Promises
