@@ -1,0 +1,26 @@
+# SPDX-License-Identifier: PMPL-1.0-or-later
+# Clade declaration — part of the gv-clade-index registry
+# See: https://github.com/hyperpolymath/gv-clade-index
+
+[identity]
+uuid = "ef3e3f44-fdd5-58f6-b55c-5b8940a8f7ea"
+primary-forge = "github"
+primary-owner = "hyperpolymath"
+canonical-name = "polyglot-formalisms-elixir"
+prefixed-name = "fv-polyglot-formalisms-elixir"
+
+[clade]
+primary = "fv"
+secondary = ["dx"]
+assigned = "2026-03-16"
+rationale = ""
+
+[forges]
+github = "hyperpolymath/polyglot-formalisms-elixir"
+gitlab = "hyperpolymath/polyglot-formalisms-elixir"
+bitbucket = "hyperpolymath/polyglot-formalisms-elixir"
+
+[lineage]
+type = "standalone"
+parent = "Formal methods bindings for Elixir"
+born = "2026-03-16"
