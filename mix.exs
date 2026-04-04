@@ -28,7 +28,9 @@ defmodule PolyglotFormalisms.MixProject do
 
   defp deps do
     [
-      {:ex_doc, "~> 0.31", only: :dev, runtime: false}
+      {:ex_doc, "~> 0.31", only: :dev, runtime: false},
+      {:stream_data, "~> 1.0", only: [:dev, :test]},
+      {:benchee, "~> 1.0", only: [:dev, :test]}
     ]
   end
 
