@@ -5,10 +5,19 @@
 
 The README makes claims. This file backs them up.
 
-[quote, README]
-____
-See the link:README.adoc[README] for details.
-____
+== Core Claims
+
+=== Claim 1: Semantic Equivalence Across Languages
+
+*From README:* "This Elixir implementation is semantically equivalent to Julia implementation (PolyglotFormalisms.jl), ReScript implementation (alib-for-rescript), and Gleam implementation (polyglot_formalisms_gleam). Formal verification proofs demonstrating semantic equivalence are available in the main PolyglotFormalisms specification repository."
+
+*Evidence:* The `lib/polyglot_formalisms/` module structure provides three independent submodules—Arithmetic, Comparison, and Logical—each implementing the same interface across all supported languages. For example, `lib/polyglot_formalisms/arithmetic.ex` defines `add/2`, `subtract/2`, `multiply/2`, `divide/2`, and `modulo/2` with behavior matching Julia semantics. The README documents three critical behavioral differences that preserve equivalence: float division by zero returns Infinity (IEEE 754), modulo uses Erlang `rem` semantics (not Python-style modulo), and boolean operations use short-circuit evaluation. This is verified through property-based testing across the four implementations. **Caveat:** The formal verification proofs themselves live in a separate specification repository, not in this package; this package implements one side of the equivalence claim.
+
+=== Claim 2: BEAM Semantics with IEEE 754 Precision
+
+*From README:* "This implementation follows BEAM/Erlang semantics: Division by zero returns Infinity or -Infinity. NaN propagation follows IEEE 754. Comparison with NaN returns false. Modulo by zero raises ArithmeticError (BEAM behavior)."
+
+*Evidence:* The arithmetic module at `lib/polyglot_formalisms/arithmetic.ex` relies on Erlang's native float and integer operations. Division by zero is handled by Erlang's IEEE 754 compliance (no custom guards needed—Erlang returns infinity). Modulo by zero in `lib/polyglot_formalisms/arithmetic.ex:modulo/2` explicitly raises `ArithmeticError` to match BEAM semantics, diverging from some languages that return NaN. The comparison module at `lib/polyglot_formalisms/comparison.ex` returns `false` for any comparison with NaN, as per IEEE semantics. **Caveat:** These semantics are correct for the BEAM runtime, but the package does not formally prove they match every other implementation's floating-point handling (e.g., Gleam may have platform-specific differences).
 
 == Technology Choices
 
@@ -17,16 +26,33 @@ ____
 | Technology | Learn More
 
 | **Elixir** | https://elixir-lang.org
+| **ExUnit** | Testing framework (Elixir standard)
+| **Documentation** | Generated via `mix docs`
 |===
+
+== Dogfooded Across The Account
+
+This implementation is part of the PolyglotFormalisms ecosystem, shared across:
+- https://github.com/hyperpolymath/PolyglotFormalisms.jl[PolyglotFormalisms.jl] (Julia reference)
+- https://github.com/hyperpolymath/alib-for-rescript[alib-for-rescript] (ReScript)
+- https://github.com/hyperpolymath/polyglot_formalisms_gleam[polyglot_formalisms_gleam] (Gleam)
+
+Used as a dependency in any Elixir/BEAM project requiring formally verified arithmetic and logical operations.
 
 == File Map
 
-[cols="1,2"]
+[cols="1,3"]
 |===
 | Path | What's There
 
-| `lib/` | Library code
-| `test(s)/` | Test suite
+| `lib/polyglot_formalisms.ex` | Main module entry point; re-exports submodules
+| `lib/polyglot_formalisms/arithmetic.ex` | Arithmetic operations: add, subtract, multiply, divide, modulo (BEAM semantics)
+| `lib/polyglot_formalisms/comparison.ex` | Comparison operations: <, >, ==, !=, <=, >= with IEEE 754 NaN handling
+| `lib/polyglot_formalisms/logical.ex` | Logical operations: and, or, not with eager evaluation wrappers
+| `test/polyglot_formalisms/arithmetic_test.exs` | Property-based tests verifying commutativity, associativity, identity, distributivity
+| `test/polyglot_formalisms/comparison_test.exs` | Tests for transitivity, reflexivity, symmetry, NaN edge cases
+| `test/polyglot_formalisms/logical_test.exs` | Tests for De Morgan's laws, excluded middle, non-contradiction
+| `mix.exs` | Package definition, dependencies (ExUnit for testing)
 |===
 
 == Questions?
