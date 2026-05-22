@@ -1,4 +1,4 @@
-# SPDX-License-Identifier: PMPL-1.0-or-later
+# SPDX-License-Identifier: MPL-2.0
 # AI Assistant Instructions for polyglot-formalisms-elixir
 # Author: Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 # Last updated: 2026-03-02
@@ -11,13 +11,13 @@
 ## Canonical Locations
 - SCM files: `.machine_readable/` ONLY (.machine_readable/6a2/STATE.a2ml, .machine_readable/6a2/ECOSYSTEM.a2ml, .machine_readable/6a2/META.a2ml, .machine_readable/6a2/AGENTIC.a2ml, .machine_readable/6a2/NEUROSYM.a2ml, .machine_readable/6a2/PLAYBOOK.a2ml)
 - Legacy location: `.machines_readable/6scm/` exists but `.machine_readable/` is authoritative
-- License: PMPL-1.0-or-later (Polymathematical Meta-Public License / Palimpsest License)
+- License: MPL-2.0 (Polymathematical Meta-Public License / Palimpsest License)
 - Author: Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 
 ## Critical Invariants
-- NEVER use AGPL-3.0 (replaced by PMPL-1.0-or-later)
+- NEVER use AGPL-3.0 (replaced by MPL-2.0)
 - NEVER create SCM files in the repository root
-- ALL source files MUST have `# SPDX-License-Identifier: PMPL-1.0-or-later` header
+- ALL source files MUST have `# SPDX-License-Identifier: MPL-2.0` header
 - String operations use 1-based indexing (to match Julia and Idris formalisms)
 - Logical operations use `logical_` prefix to avoid Kernel conflicts
 

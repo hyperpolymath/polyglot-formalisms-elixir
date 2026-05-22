@@ -1,4 +1,4 @@
-# SPDX-License-Identifier: PMPL-1.0-or-later
+# SPDX-License-Identifier: MPL-2.0
 # End-to-end tests for PolyglotFormalisms — full cross-module computation pipelines.
 #
 # These tests exercise combined usage of Arithmetic, Comparison, Logical, and

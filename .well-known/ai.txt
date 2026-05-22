@@ -1,4 +1,4 @@
-# SPDX-License-Identifier: PMPL-1.0-or-later
+# SPDX-License-Identifier: MPL-2.0
 # ai.txt for polyglot-formalisms-elixir
 # AI agent interaction policy
 
@@ -10,5 +10,5 @@ Allow: /
 
 # AI agents should read AI.a2ml in the repository root for instructions.
 # SCM files are in .machine_readable/ (authoritative location).
-# License: PMPL-1.0-or-later
+# License: MPL-2.0
 # Author: Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>

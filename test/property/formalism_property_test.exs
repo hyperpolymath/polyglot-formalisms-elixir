@@ -1,4 +1,4 @@
-# SPDX-License-Identifier: PMPL-1.0-or-later
+# SPDX-License-Identifier: MPL-2.0
 # StreamData property tests for PolyglotFormalisms mathematical invariants.
 #
 # Each formalism module claims specific algebraic properties (commutativity,

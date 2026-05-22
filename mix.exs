@@ -1,4 +1,4 @@
-# SPDX-License-Identifier: PMPL-1.0-or-later
+# SPDX-License-Identifier: MPL-2.0
 defmodule PolyglotFormalisms.MixProject do
   use Mix.Project
 
@@ -45,7 +45,7 @@ defmodule PolyglotFormalisms.MixProject do
   defp package do
     [
       name: "polyglot_formalisms",
-      licenses: ["PMPL-1.0-or-later"],
+      licenses: ["MPL-2.0"],
       maintainers: ["Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>"],
       links: %{
         "GitHub" => "https://github.com/hyperpolymath/polyglot-formalisms-elixir",

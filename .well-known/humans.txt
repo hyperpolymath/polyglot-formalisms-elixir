@@ -1,4 +1,4 @@
-# SPDX-License-Identifier: PMPL-1.0-or-later
+# SPDX-License-Identifier: MPL-2.0
 # humans.txt for polyglot-formalisms-elixir
 # See https://humanstxt.org/
 
@@ -12,7 +12,7 @@ Location: United Kingdom
 /* SITE */
 Software: Elixir, BEAM/OTP
 Standards: PolyglotFormalisms Common Library Specification
-License: PMPL-1.0-or-later (Polymathematical Meta-Public License)
+License: MPL-2.0 (Polymathematical Meta-Public License)
 
 /* THANKS */
 The Elixir and Erlang/OTP communities
