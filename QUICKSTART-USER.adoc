@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MPL-2.0
+// SPDX-License-Identifier: CC-BY-SA-4.0
 // Template: QUICKSTART-USER.adoc — 5-minute path to working software
 // Replace polyglot-formalisms-elixir, Polyglot Formalisms Elixir — See README.adoc for details., just run, Polyglot Formalisms Elixir started successfully. with actuals
 = polyglot-formalisms-elixir — Quick Start for Users
