@@ -1,0 +1,27 @@
+# SPDX-License-Identifier: MPL-2.0
+# Manifest for this repository (schema proven/manifest/v1); see
+# hyperpolymath/proven-cicd-and-workflows docs/PROVEN-ADOPTION.adoc.
+schema = "proven/manifest/v1"
+
+# Elixir library (mix.exs, lib/, test/). Commands are unverified locally: no
+# Elixir toolchain was available when this manifest was written.
+[categories.unit.elixir]
+command = "mix test"          # runs all of test/ (unit, property, e2e, zigzag)
+
+[categories.smoke.elixir]
+command = "mix test test/e2e" # the public-API end-to-end test; there is no separate smoke suite
+
+[categories.build.elixir]
+command = "mix compile"
+
+[categories.p2p]
+na = "single library with no inter-component or inter-process seam; its API is exercised by the unit and e2e tests"
+
+[languages.ignore.idris2]
+reason = "tests/zigzag/ZigzagModel.idr is a model file; Idris2 has no runner in release 0.1 and nothing in the Elixir build depends on it"
+
+[bench.formalism]
+command = "mix run bench/formalism_bench.exs --proven-metric"
+metric = "ns_per_op"
+lower_is_better = true
+baselining = true
