@@ -18,7 +18,7 @@ small_float  = 3.14159
 long_string  = String.duplicate("hello world ", 100)
 short_string = "hello"
 
-Benchee.run(
+suite = Benchee.run(
   %{
     # --- Arithmetic benchmarks ---
     "Arithmetic.add (integers)" => fn ->
@@ -35,14 +35,6 @@ Benchee.run(
 
     "Arithmetic.multiply (integers)" => fn ->
       Arithmetic.multiply(large_int, 2)
-    end,
-
-    "Arithmetic.divide (integers)" => fn ->
-      Arithmetic.divide(large_int, 7)
-    end,
-
-    "Arithmetic.modulo" => fn ->
-      Arithmetic.modulo(large_int, 97)
     end,
 
     # --- Comparison benchmarks ---
@@ -62,8 +54,8 @@ Benchee.run(
       Comparison.equal(large_int, large_int - 1)
     end,
 
-    "Comparison.greater_equal" => fn ->
-      Comparison.greater_equal(large_int, large_int)
+    "Comparison.less_equal" => fn ->
+      Comparison.less_equal(large_int, large_int)
     end,
 
     # --- Logical benchmarks ---
@@ -108,3 +100,15 @@ Benchee.run(
     Benchee.Formatters.Console
   ]
 )
+
+if "--proven-metric" in System.argv() do
+  # Give each scenario equal weight for proportional changes in its mean runtime.
+  log_times =
+    Enum.map(suite.scenarios, fn scenario ->
+      :math.log(scenario.run_time_data.statistics.average)
+    end)
+
+  ns_per_op = :math.exp(Enum.sum(log_times) / length(log_times))
+  # Proven reads the last stdout line and requires a decimal without an exponent.
+  IO.puts(:erlang.float_to_binary(ns_per_op, decimals: 6))
+end

@@ -21,5 +21,7 @@ na = "single library with no inter-component or inter-process seam; its API is e
 reason = "tests/zigzag/ZigzagModel.idr is a model file; Idris2 has no runner in release 0.1 and nothing in the Elixir build depends on it"
 
 [bench.formalism]
-command = "mix run bench/formalism_bench.exs"   # Benchee throughput run; scored by wall-clock seconds
+command = "mix run bench/formalism_bench.exs --proven-metric"
+metric = "ns_per_op"
+lower_is_better = true
 baselining = true
